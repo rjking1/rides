@@ -55,7 +55,7 @@
           ',' +
           alt_gain +
           ",'" +
-          description +
+          description.replace(/'/g, "''") +
           "','" +
           weather +
           "'," +
@@ -73,7 +73,7 @@
           ',' +
           alt_gain +
           ",'" +
-          description +
+          description.replace(/'/g, "''") +
           "','" +
           weather +
           "'," +
