@@ -1,7 +1,28 @@
 <script>
-  export let name
-  export let pageName
+  import { loggedIn, page } from "./Stores.js";
+
+  export let name;
+  // export let pageName;
+
+  function doLoginCheck() {
+    if ($loggedIn == "false") {
+      $page = "login";
+      // } else if (name == "back") {
+      //   if (canGoBack()) {
+      //     $page = goBack();
+      //   }
+      // } else if (name == "index") {
+      //   clearPageHistory();
+      //   $page = gotoPage("index", "index");
+    } else {
+      $page = name;
+    }
+  }
 </script>
+
+<button class:active={$page === name} on:click={doLoginCheck}>
+  <slot />
+</button>
 
 <style>
   button {
@@ -16,7 +37,3 @@
     background-color: yellow;
   }
 </style>
-
-<button class:active={pageName === name} on:click={() => (pageName = name)}>
-  <slot />
-</button>

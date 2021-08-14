@@ -1,22 +1,17 @@
 <script>
-  import { doFetch } from './Common.js'
+  import { doFetch } from "./Common.js";
+  import { dbN } from "./Stores.js";
 
-  let sql = 'select r.ride_date, rt.name, b.name, r.km, r.alt_gain, r.description, r.weather from rides r' +
-      ' join bikes b on b.id = r.bike_id join routes rt on rt.id = r.route_id' +
-      ' where r.ride_date > curdate() - interval 1 month order by ride_date desc'
-  let qresult = null
+  let sql =
+    "select r.ride_date, rt.name, b.name, r.km, r.alt_gain, r.description, r.weather from rides r" +
+    " join bikes b on b.id = r.bike_id join routes rt on rt.id = r.route_id" +
+    " where r.ride_date > curdate() - interval 1 month order by ride_date desc";
+  let qresult = null;
 
   async function doQuery() {
-    qresult = await doFetch(sql)
+    qresult = await doFetch($dbN, sql);
   }
 </script>
-
-<style>
-  input { width: 90%}
-  li {
-    list-style: none;
-  }
-</style>
 
 <label>SQL</label>
 <input bind:value={sql} />
@@ -36,3 +31,12 @@
     </ul>
   {/if}
 </pre>
+
+<style>
+  input {
+    width: 90%;
+  }
+  li {
+    list-style: none;
+  }
+</style>
