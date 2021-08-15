@@ -87,7 +87,7 @@
 </script>
 
 <label>Date</label>
-<input type="date" bind:value={ride_date} />
+<input id="id_date" type="date" bind:value={ride_date} />
 
 <label>Route</label>
 <select id="id_route" bind:value={route_id}>
@@ -104,16 +104,16 @@
 </select>
 
 <label>km</label>
-<input type="number" bind:value={km} />
+<input id="id_km" type="number" bind:value={km} />
 
 <label>alt</label>
-<input type="number" bind:value={alt_gain} />
+<input id="id_alt" type="number" bind:value={alt_gain} />
 
 <label>Description</label>
-<input bind:value={description} />
+<input id="id_desc" bind:value={description} />
 
 <label>Weather</label>
-<input bind:value={weather} />
+<input id="id_weather" bind:value={weather} />
 
 <button type="button" on:click={doAddOrUpdate}>
   {#if id === ""}Add Ride{:else}Update{/if}
