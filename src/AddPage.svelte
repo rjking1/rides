@@ -41,8 +41,6 @@
     bikes = await doFetch($dbN, "select id, name from bikes order by name");
   });
 
-  //fetch('https://www.artspace7.com.au/dsql/json_helper_get.php?db=art25285_rides2&sql=select%20*%20from%20bikes')
-
   async function doAddOrUpdate() {
     const sql =
       id === ""
