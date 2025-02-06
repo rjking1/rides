@@ -11,6 +11,7 @@
 
   let qresult = null;
   let qresult2 = null;
+  let qresult3 = null;
   let heatmapDataKms = null;
   let heatmapDataAlt = null;
   let heatmapColorsKms;
@@ -36,6 +37,10 @@
         " union" +
         " select 'Y', count(*), sum(km), sum(alt_gain) from rides where ride_date >= curdate() - interval 1 year"
     );
+
+    qresult3 = await doFetch(
+      $dbN,    
+      `select concat('[',b.name,']'),  sum(r.km), sum(r.alt_gain) from rides r join bikes b on b.id = r.bike_id  group by 1 order by 2 desc` );
 
     // heatmap
     let data = await doFetch(
@@ -103,6 +108,15 @@
   {#if qresult2}
     <ul>
       {#each qresult2 as row}
+        <li>
+          {#each Object.values(row) as field}{field + ' '}{/each}
+        </li>
+      {/each}
+    </ul>
+  {/if}
+  {#if qresult3}
+    <ul>
+      {#each qresult3 as row}
         <li>
           {#each Object.values(row) as field}{field + ' '}{/each}
         </li>
