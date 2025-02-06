@@ -1,5 +1,5 @@
 <script>
-  import { doFetch } from "./Common.js";
+  import { doFetch } from "../../common/dbutils.js";
   import { dbN } from "./Stores.js";
 
   let sql =

@@ -1,6 +1,5 @@
 <script>
-  import { doFetch } from "./Common.js";
-  // import { gotoPage } from "./pageStack.js";
+  import { doFetch } from "../../common/dbutils.js";
   import {
     // society,
     page,
@@ -11,7 +10,7 @@
     // views,
   } from "./Stores.js";
 
-  const db_base = "art25285_";
+  const db_base = "art25285_"; // move to config.js
   let username = "";
   let password = "";
   let qresult;
@@ -39,7 +38,7 @@
         ex: qresult[0]["exceptions"],
       };
       $dbN = db_base + $dbName;
-      console.log($dbN)
+      console.log($dbN);
       $loggedIn = "true";
 
       // qresult = await doFetch(
